@@ -70,8 +70,11 @@ public class ProfessionDetailFragment extends Fragment {
                 appBarLayout.setTitle(getString(profession.getName()));
             }
 
-            Bitmap bm = BitmapFactory.decodeResource(getResources(), profession.getIcon());
-            ((ImageView) activity.findViewById(R.id.ficon)).setImageBitmap(ProfessionListActivity.getCircleBitmap(bm, profession.getColor(), getActivity().getApplicationContext()));
+            ImageView professionIcon = (ImageView) activity.findViewById(R.id.ficon);
+            if (professionIcon != null) {
+                Bitmap bm = BitmapFactory.decodeResource(getResources(), profession.getIcon());
+                professionIcon.setImageBitmap(ProfessionListActivity.getCircleBitmap(bm, profession.getColor(), getActivity().getApplicationContext()));
+            }
         }
     }
 
