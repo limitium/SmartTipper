@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.limitium.smarttipper.ProfessionDetailFragment">
+    <TextView
+        style="?android:attr/textAppearanceLarge"
+        android:id="@+id/greed_level"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textIsSelectable="false"
+        android:text="@string/tips_level"
+        android:layout_marginTop="10dp" />
+
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/greed_mode"
+        android:layout_gravity="center_horizontal" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tip_total_per_p"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            android:text="Persons:"
+            android:textSize="@dimen/abc_text_size_headline_material"
+            android:width="138dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/order_persons"
+            android:width="70dp"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tip_total"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            android:text="Total:"
+            android:textSize="@dimen/abc_text_size_headline_material"
+            android:width="94dp" />
+
+        <TextView
+            style="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            android:text="$"
+            android:textSize="@dimen/abc_text_size_headline_material"
+            android:width="44dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/total_order"
+            android:textSize="@dimen/abc_text_size_headline_material"
+            android:width="150dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <View android:id="@+id/primerdivisor"
+            android:layout_height="2dp"
+            android:layout_width="fill_parent"
+            android:background="#000"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            android:textStyle="bold"
+            android:text="Per person:"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+
+        <TextView
+            style="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            android:text="$"
+            android:textSize="@dimen/abc_text_size_headline_material"
+            android:width="44dp" />
+
+        <TextView
+            style="?android:attr/textAppearanceLarge"
+            android:id="@+id/per_person_total"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            android:textStyle="bold"
+            android:text="123"
+            android:textSize="@dimen/abc_text_size_headline_material" />
+    </LinearLayout>
+</LinearLayout>

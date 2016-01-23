@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Smart Tipper</string>
+    <string name="title_profession_detail">Profession Detail</string>
+    <string name="waiter">Waiter</string>
+    <string name="delivery">Restaurant delivery</string>
+    <string name="takeout">Restaurant takeout</string>
+    <string name="bartender">Bartender</string>
+    <string name="barista">Barista</string>
+    <string name="driver">Cab driver</string>
+    <string name="valet">Valet guy</string>
+    <string name="bellman">Hotel bellman</string>
+    <string name="doorman">Apartment doorman</string>
+    <string name="barbershop">Barbershop</string>
+    <string name="tattoo">Tattoo artist</string>
+    <string name="massage">Massage therapist</string>
+    <string name="stripper">Strippers</string>
+    <string name="golf">Golf caddies</string>
+    <string name="greed_low">Low</string>
+    <string name="greed_average">Average</string>
+    <string name="greed_high">High</string>
+    <string name="tips_level">Tips level: </string>
+</resources>
