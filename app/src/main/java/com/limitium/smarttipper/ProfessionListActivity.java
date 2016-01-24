@@ -23,8 +23,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.limitium.smarttipper.core.tips.FixTipStrategy;
-import com.limitium.smarttipper.core.tips.PercentTipStrategy;
+import com.limitium.smarttipper.core.calculation.FixTipStrategy;
+import com.limitium.smarttipper.core.calculation.PercentTipStrategy;
 import com.limitium.smarttipper.core.Profession;
 
 import java.util.Arrays;
@@ -41,7 +41,7 @@ import java.util.List;
 public class ProfessionListActivity extends AppCompatActivity {
 
 
-    public static List<Profession> PROFESSIONS;
+    public final static List<Profession> PROFESSIONS;
 
     static {
         PROFESSIONS = Arrays.asList(
@@ -116,7 +116,7 @@ public class ProfessionListActivity extends AppCompatActivity {
             holder.mItem = profession;
 
             Bitmap bm = BitmapFactory.decodeResource(getResources(), profession.getIcon());
-            holder.mIconView.setImageBitmap(getCircleBitmap(bm, profession.getColor(),getApplicationContext()));
+            holder.mIconView.setImageBitmap(getCircleBitmap(bm, profession.getColor(), getApplicationContext()));
 
             holder.mContentView.setText(profession.getName());
 

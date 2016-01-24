@@ -1,21 +1,21 @@
 package com.limitium.smarttipper.core;
 
-import com.limitium.smarttipper.core.tips.Tipable;
+import com.limitium.smarttipper.core.calculation.BaseStrategy;
 
-public class Profession implements TipProvider {
+public class Profession implements StrategyProvider {
     private final Integer icon;
     private final Integer name;
     private final Integer color;
 
     private final Integer percentOfSalary;
     private final Integer percentOfPayers;
-    private final Tipable tipStrategy;
+    private final BaseStrategy tipStrategy;
 
 
-    public Profession(Integer icon, Integer name,Integer color, Integer percentOfSalary, Integer percentOfPayers, Tipable tipStrategy) {
+    public Profession(Integer icon, Integer name, Integer color, Integer percentOfSalary, Integer percentOfPayers, BaseStrategy tipStrategy) {
         this.icon = icon;
         this.name = name;
-        this.color=color;
+        this.color = color;
         this.percentOfSalary = percentOfSalary;
         this.percentOfPayers = percentOfPayers;
         this.tipStrategy = tipStrategy;
@@ -40,7 +40,7 @@ public class Profession implements TipProvider {
     }
 
     @Override
-    public Tipable getTipStrategy() {
+    public BaseStrategy getTipStrategy() {
         return tipStrategy;
     }
 

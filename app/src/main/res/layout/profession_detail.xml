@@ -5,146 +5,119 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context="com.limitium.smarttipper.ProfessionDetailFragment">
+
     <TextView
-        style="?android:attr/textAppearanceLarge"
         android:id="@+id/greed_level"
+        style="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:padding="16dp"
-        android:textIsSelectable="false"
         android:text="@string/tips_level"
-        android:layout_marginTop="10dp" />
+        android:textIsSelectable="false" />
 
 
     <SeekBar
+        android:id="@+id/greed_mode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/greed_mode"
         android:layout_gravity="center_horizontal" />
 
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tip_total_per_p"
             style="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:width="138dp"
             android:padding="16dp"
-            android:textIsSelectable="true"
             android:text="Persons:"
-            android:textSize="@dimen/abc_text_size_headline_material"
-            android:width="138dp" />
+            android:textIsSelectable="true"
+            android:textSize="@dimen/abc_text_size_headline_material" />
 
         <EditText
+            android:id="@+id/order_persons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/order_persons"
             android:width="70dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
             android:textSize="@dimen/abc_text_size_headline_material" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/tip_special"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tip_total"
-            style="?android:attr/textAppearanceLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textIsSelectable="true"
-            android:text="Total:"
-            android:textSize="@dimen/abc_text_size_headline_material"
-            android:width="94dp" />
-
-        <TextView
-            style="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textIsSelectable="true"
-            android:text="$"
-            android:textSize="@dimen/abc_text_size_headline_material"
-            android:width="44dp" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/total_order"
-            android:textSize="@dimen/abc_text_size_headline_material"
-            android:width="150dp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <View android:id="@+id/primerdivisor"
-            android:layout_height="2dp"
+        <View
+            android:id="@+id/primerdivisor"
             android:layout_width="fill_parent"
-            android:background="#000"
+            android:layout_height="2dp"
+            android:layout_marginBottom="0dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="0dp" />
+            android:background="#000" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
-            style="?android:attr/textAppearanceLarge"
             android:id="@+id/textView"
+            style="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:padding="16dp"
-            android:textIsSelectable="true"
-            android:textStyle="bold"
             android:text="Per person:"
-            android:textSize="@dimen/abc_text_size_headline_material" />
+            android:textIsSelectable="true"
+            android:textSize="@dimen/abc_text_size_headline_material"
+            android:textStyle="bold" />
 
         <TextView
-            style="?android:attr/textAppearanceLarge"
             android:id="@+id/textView2"
+            style="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:width="44dp"
             android:padding="16dp"
-            android:textIsSelectable="true"
             android:text="$"
-            android:textSize="@dimen/abc_text_size_headline_material"
-            android:width="44dp" />
+            android:textIsSelectable="true"
+            android:textSize="@dimen/abc_text_size_headline_material" />
 
         <TextView
-            style="?android:attr/textAppearanceLarge"
             android:id="@+id/per_person_total"
+            style="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:padding="16dp"
+            android:text="0.00"
             android:textIsSelectable="true"
-            android:textStyle="bold"
-            android:text="123"
-            android:textSize="@dimen/abc_text_size_headline_material" />
+            android:textSize="@dimen/abc_text_size_headline_material"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

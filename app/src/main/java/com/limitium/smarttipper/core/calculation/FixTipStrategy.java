@@ -1,9 +1,11 @@
-package com.limitium.smarttipper.core.tips;
+package com.limitium.smarttipper.core.calculation;
 
 
 import com.limitium.smarttipper.core.GreedMode;
+import com.limitium.smarttipper.core.inflaters.EmptyInflater;
+import com.limitium.smarttipper.core.inflaters.Inflater;
 
-public class FixTipStrategy implements Tipable {
+public class FixTipStrategy extends BaseStrategy {
     private final float low;
     private final float average;
     private final float high;
@@ -15,7 +17,7 @@ public class FixTipStrategy implements Tipable {
     }
 
     @Override
-    public float getTips(GreedMode greed) {
+    protected float calculate(GreedMode greed) {
         if (greed == GreedMode.LOW) {
             return low;
         }
@@ -23,5 +25,10 @@ public class FixTipStrategy implements Tipable {
             return average;
         }
         return high;
+    }
+
+    @Override
+    public Inflater getInflater() {
+        return new EmptyInflater();
     }
 }

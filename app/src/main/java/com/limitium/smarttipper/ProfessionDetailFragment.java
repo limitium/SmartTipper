@@ -18,8 +18,9 @@ import android.widget.TextView;
 
 import com.limitium.smarttipper.core.GreedMode;
 import com.limitium.smarttipper.core.Profession;
-import com.limitium.smarttipper.core.TipCalculator;
-import com.limitium.smarttipper.core.tips.PercentTipStrategy;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * A fragment representing a single Profession detail screen.
@@ -34,17 +35,11 @@ public class ProfessionDetailFragment extends Fragment {
      */
     public static final String ARG_ITEM_ID = "item_id";
 
-    /**
-     * The dummy content this fragment is presenting.
-     */
     String greeds[];
     private Profession profession;
     private TextView seekBarValue;
     private TextView totalPerPerson;
-    private Integer persons = 1;
-    private GreedMode greed = GreedMode.AVERAGE;
-    private TipCalculator tipCalculator = new TipCalculator();
-    private Float total = 0f;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -83,45 +78,27 @@ public class ProfessionDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.profession_detail, container, false);
 
-        totalPerPerson = (TextView) rootView.findViewById(R.id.per_person_total);
         setUpGreedBar(rootView);
         setUpPersons(rootView);
-        setUpTotal(rootView);
 
-        recalculate();
-        return rootView;
-    }
+        profession.getTipStrategy().getInflater().inflateAndSetUp((ViewGroup) rootView.findViewById(R.id.tip_special), profession.getTipStrategy());
 
+        totalPerPerson = (TextView) rootView.findViewById(R.id.per_person_total);
 
-    private void setUpTotal(View rootView) {
-        final EditText orderTotal = (EditText) rootView.findViewById(R.id.total_order);
-        orderTotal.setText(total.toString());
-        orderTotal.addTextChangedListener(new TextWatcher() {
+        profession.getTipStrategy().deleteObservers();
+        profession.getTipStrategy().addObserver(new Observer() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                total = s.length() == 0 ? 0 : Float.valueOf(s.toString());
-                if (total < 0) {
-                    total = 0f;
-                    orderTotal.setText(total.toString());
-                }
-                recalculate();
+            public void update(Observable observable, Object data) {
+                totalPerPerson.setText(String.format("%.2f", (float) data));
             }
         });
+        profession.getTipStrategy().recalculate();
+        return rootView;
     }
 
     private void setUpPersons(View rootView) {
         final EditText orderPersons = (EditText) rootView.findViewById(R.id.order_persons);
-        orderPersons.setText(persons.toString());
+        orderPersons.setText(String.valueOf(profession.getTipStrategy().getPersons()));
         orderPersons.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -134,20 +111,19 @@ public class ProfessionDetailFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                persons = s.length() == 0 ? 1 : Integer.valueOf(s.toString());
+                int persons = s.length() == 0 ? 1 : Integer.valueOf(s.toString());
                 if (persons < 1) {
                     persons = 1;
-                    orderPersons.setText(persons.toString());
+                    orderPersons.setText(String.valueOf(persons));
                 }
-                recalculate();
+                profession.getTipStrategy().setPersons(persons);
             }
         });
     }
 
-
     private void setUpGreedBar(View rootView) {
         SeekBar seekBar = (SeekBar) rootView.findViewById(R.id.greed_mode);
-        seekBar.setProgress(greed.ordinal());
+        seekBar.setProgress(profession.getTipStrategy().getGreed().ordinal());
         seekBar.setMax(2);
         seekBarValue = (TextView) rootView.findViewById(R.id.greed_level);
 
@@ -155,7 +131,8 @@ public class ProfessionDetailFragment extends Fragment {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                updateGreed(seekBar);
+                seekBarValue.setText(getString(R.string.tips_level) + " " + greeds[seekBar.getProgress()]);
+                profession.getTipStrategy().setGreed(GreedMode.values()[seekBar.getProgress()]);
             }
 
             @Override
@@ -167,24 +144,7 @@ public class ProfessionDetailFragment extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
-
-
         });
-        updateGreed(seekBar);
     }
 
-    public void updateGreed(SeekBar seekBar) {
-        seekBarValue.setText(getString(R.string.tips_level) + " " + greeds[seekBar.getProgress()]);
-        greed = GreedMode.values()[seekBar.getProgress()];
-        recalculate();
-    }
-
-    public void recalculate() {
-        tipCalculator.setTipProvider(profession);
-        tipCalculator.setGreed(greed);
-        tipCalculator.setPersons(persons);
-        PercentTipStrategy tipStrategy = (PercentTipStrategy) profession.getTipStrategy();
-        tipStrategy.setOrderSumm(total);
-        totalPerPerson.setText(String.format("%.2f", tipCalculator.getTip()));
-    }
 }

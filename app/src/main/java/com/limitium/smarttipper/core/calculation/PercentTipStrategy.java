@@ -1,12 +1,14 @@
-package com.limitium.smarttipper.core.tips;
+package com.limitium.smarttipper.core.calculation;
 
 import com.limitium.smarttipper.core.GreedMode;
+import com.limitium.smarttipper.core.inflaters.Inflater;
+import com.limitium.smarttipper.core.inflaters.TotalInflater;
 
-public class PercentTipStrategy implements Tipable {
+public class PercentTipStrategy extends BaseStrategy {
     private final float low;
     private final float average;
     private final float high;
-    private float sum;
+    private float sum = 0f;
 
     public PercentTipStrategy(float low, float average, float high) {
         this.low = low;
@@ -14,13 +16,9 @@ public class PercentTipStrategy implements Tipable {
         this.high = high;
     }
 
-    @Override
-    public float getTips(GreedMode greed) {
-        return sum * getPercent(greed) / 100;
-    }
-
     public void setOrderSumm(float sum) {
         this.sum = sum;
+        recalculate();
     }
 
     private float getPercent(GreedMode greed) {
@@ -31,5 +29,19 @@ public class PercentTipStrategy implements Tipable {
             return average;
         }
         return high;
+    }
+
+    @Override
+    protected float calculate(GreedMode greed) {
+        return sum * getPercent(greed) / 100;
+    }
+
+    public float getSum() {
+        return sum;
+    }
+
+    @Override
+    public Inflater getInflater() {
+        return new TotalInflater();
     }
 }
