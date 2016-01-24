@@ -5,10 +5,10 @@ import com.limitium.smarttipper.core.inflaters.Inflater;
 import com.limitium.smarttipper.core.inflaters.TotalInflater;
 
 public class PercentTipStrategy extends BaseStrategy {
-    private final float low;
-    private final float average;
-    private final float high;
-    private float sum = 0f;
+    protected final float low;
+    protected final float average;
+    protected final float high;
+    protected float sum = 0f;
 
     public PercentTipStrategy(float low, float average, float high) {
         this.low = low;

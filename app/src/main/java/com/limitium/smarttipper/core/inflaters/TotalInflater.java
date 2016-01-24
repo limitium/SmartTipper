@@ -11,11 +11,12 @@ import com.limitium.smarttipper.core.calculation.BaseStrategy;
 import com.limitium.smarttipper.core.calculation.PercentTipStrategy;
 
 public class TotalInflater extends Inflater {
+    protected EditText orderTotal;
 
     @Override
     protected void setup(View layout, BaseStrategy strategy) {
         final PercentTipStrategy realStrategy = (PercentTipStrategy) strategy;
-        final EditText orderTotal = (EditText) layout.findViewById(R.id.total_order);
+        orderTotal = (EditText) layout.findViewById(R.id.total_order);
         orderTotal.setText(String.valueOf(realStrategy.getSum()));
         orderTotal.addTextChangedListener(new TextWatcher() {
             @Override

@@ -76,6 +76,8 @@ public class ProfessionDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        profession.getTipStrategy().deleteObservers();
+
         View rootView = inflater.inflate(R.layout.profession_detail, container, false);
 
         setUpGreedBar(rootView);
@@ -85,8 +87,7 @@ public class ProfessionDetailFragment extends Fragment {
 
         totalPerPerson = (TextView) rootView.findViewById(R.id.per_person_total);
 
-        profession.getTipStrategy().deleteObservers();
-        profession.getTipStrategy().addObserver(new Observer() {
+        profession.getTipStrategy().addCalculateObserver(new Observer() {
             @Override
             public void update(Observable observable, Object data) {
                 totalPerPerson.setText(String.format("%.2f", (float) data));

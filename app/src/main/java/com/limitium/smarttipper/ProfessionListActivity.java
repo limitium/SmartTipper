@@ -27,6 +27,7 @@ import com.limitium.smarttipper.core.calculation.DeliveryStrategy;
 import com.limitium.smarttipper.core.calculation.FixTipStrategy;
 import com.limitium.smarttipper.core.calculation.PercentTipStrategy;
 import com.limitium.smarttipper.core.Profession;
+import com.limitium.smarttipper.core.calculation.TakeoutStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +49,7 @@ public class ProfessionListActivity extends AppCompatActivity {
         PROFESSIONS = Arrays.asList(
                 new Profession(R.drawable.ic_local_dining_white_24dp, R.string.waiter, Color.parseColor("#0288D1"), 95, 100, new PercentTipStrategy(17, 18.5f, 20)),
                 new Profession(R.drawable.ic_local_pizza_white_24dp, R.string.delivery, Color.parseColor("#0097A7"), 50, 95, new DeliveryStrategy(2, 3, 4)),
-                new Profession(R.drawable.ic_store_mall_directory_white_24dp, R.string.takeout, Color.parseColor("#00796B"), 10, 35, new PercentTipStrategy(1, 18, 20)),
+                new Profession(R.drawable.ic_store_mall_directory_white_24dp, R.string.takeout, Color.parseColor("#00796B"), 10, 35, new TakeoutStrategy(1, 2, 15)),
                 new Profession(R.drawable.ic_local_bar_white_24dp, R.string.bartender, Color.parseColor("#388E3C"), 85, 100, new PercentTipStrategy(15, 18, 20)),
                 new Profession(R.drawable.ic_local_cafe_white_24dp, R.string.barista, Color.parseColor("#689F38"), 30, 60, new FixTipStrategy(0, 0.5f, 1)),
                 new Profession(R.drawable.ic_local_taxi_white_24dp, R.string.driver, Color.parseColor("#AFB42B"), 25, 90, new PercentTipStrategy(10, 16, 18)),
