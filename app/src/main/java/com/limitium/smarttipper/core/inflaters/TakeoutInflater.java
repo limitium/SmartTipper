@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.limitium.smarttipper.R;
 import com.limitium.smarttipper.core.GreedMode;
