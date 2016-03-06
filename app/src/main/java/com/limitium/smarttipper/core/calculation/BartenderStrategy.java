@@ -18,7 +18,6 @@ public class BartenderStrategy extends PercentTipStrategy {
     private boolean isLargeTab;
     private int beers;
     private int cocktails;
-    protected float sum = 0f;
 
     public BartenderStrategy(float lowBeer, float lowCoc, float aveBeer, float aveCoc, float hiBeer, float hiCoc, float low, float average, float high) {
         super(low, average, high);
