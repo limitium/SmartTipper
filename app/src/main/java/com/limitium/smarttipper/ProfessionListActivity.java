@@ -60,7 +60,7 @@ public class ProfessionListActivity extends AppCompatActivity {
                 new Profession(R.drawable.ic_business_center_white_24dp, R.string.bellman, Color.parseColor("#E64A19"), 65, 85, new BellmanStrategy(3,2,5)),
                 new Profession(R.drawable.ic_pan_tool_white_24dp, R.string.doorman, Color.parseColor("#D32F2F"), 15, 95, new DoormanStrategy(35, 75, 300)),
                 new Profession(R.drawable.ic_content_cut_white_24dp, R.string.barbershop, Color.parseColor("#C2185B"), 40, 90, new PercentTipStrategy(15, 20, 25)),
-                new Profession(R.drawable.ic_colorize_white_24dp, R.string.tattoo, Color.parseColor("#7B1FA2"), 93, 70, new PercentTipStrategy(10, 25, 22)),
+                new Profession(R.drawable.ic_colorize_white_24dp, R.string.tattoo, Color.parseColor("#7B1FA2"), 93, 70, new PercentTipStrategy(15, 20, 25)),
                 new Profession(R.drawable.ic_airline_seat_flat_white_24dp, R.string.massage, Color.parseColor("#512DA8"), 50, 95, new PercentTipStrategy(15, 20, 25)),
                 new Profession(R.drawable.ic_golf_course_white_24dp, R.string.golf, Color.parseColor("#303F9F"), 80, 80, new PercentTipStrategy(30, 45, 60)),
                 new Profession(R.drawable.ic_visibility_white_24dp, R.string.stripper, Color.parseColor("#1976D2"), 100, 100, new PercentTipStrategy(15, 18, 20))
