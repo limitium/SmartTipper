@@ -124,16 +124,21 @@ public class ProfessionDetailFragment extends Fragment {
 
     private void setUpGreedBar(View rootView) {
         SeekBar seekBar = (SeekBar) rootView.findViewById(R.id.greed_mode);
-        seekBar.setProgress(profession.getTipStrategy().getGreed().ordinal());
-        seekBar.setMax(2);
+        seekBar.setProgress(profession.getTipStrategy().getGreed().ordinal() * 100);
+        seekBar.setMax(200);
         seekBarValue = (TextView) rootView.findViewById(R.id.greed_level);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                seekBarValue.setText(getString(R.string.tips_level) + " " + greeds[seekBar.getProgress()]);
-                profession.getTipStrategy().setGreed(GreedMode.values()[seekBar.getProgress()]);
+                if(fromUser) {
+                    float v = seekBar.getProgress() / 100f;
+                    int position = Math.round(v);
+                    seekBarValue.setText(getString(R.string.tips_level) + " " + greeds[position]);
+                    profession.getTipStrategy().setGreed(GreedMode.values()[position]);
+                    seekBar.setProgress(position * 100);
+                }
             }
 
             @Override
