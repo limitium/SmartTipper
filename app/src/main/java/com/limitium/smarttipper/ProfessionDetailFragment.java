@@ -127,7 +127,6 @@ public class ProfessionDetailFragment extends Fragment {
         seekBar.setProgress(profession.getTipStrategy().getGreed().ordinal() * 100);
         seekBar.setMax(200);
         seekBarValue = (TextView) rootView.findViewById(R.id.greed_level);
-
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
@@ -148,14 +147,15 @@ public class ProfessionDetailFragment extends Fragment {
                 seekBar.setProgress(position * 100);
             }
 
-            private int setGreedMode(SeekBar seekBar) {
-                float v = seekBar.getProgress() / 100f;
-                int position = Math.round(v);
-                seekBarValue.setText(getString(R.string.tips_level) + " " + greeds[position]);
-                profession.getTipStrategy().setGreed(GreedMode.values()[position]);
-                return position;
-            }
         });
+        setGreedMode(seekBar);
     }
 
+    private int setGreedMode(SeekBar seekBar) {
+        float v = seekBar.getProgress() / 100f;
+        int position = Math.round(v);
+        seekBarValue.setText(getString(R.string.tips_level) + " " + greeds[position]);
+        profession.getTipStrategy().setGreed(GreedMode.values()[position]);
+        return position;
+    }
 }
