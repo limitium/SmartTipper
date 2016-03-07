@@ -133,11 +133,7 @@ public class ProfessionDetailFragment extends Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(fromUser) {
-                    float v = seekBar.getProgress() / 100f;
-                    int position = Math.round(v);
-                    seekBarValue.setText(getString(R.string.tips_level) + " " + greeds[position]);
-                    profession.getTipStrategy().setGreed(GreedMode.values()[position]);
-                    seekBar.setProgress(position * 100);
+                    setGreedMode(seekBar);
                 }
             }
 
@@ -148,7 +144,16 @@ public class ProfessionDetailFragment extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                int position = setGreedMode(seekBar);
+                seekBar.setProgress(position * 100);
+            }
 
+            private int setGreedMode(SeekBar seekBar) {
+                float v = seekBar.getProgress() / 100f;
+                int position = Math.round(v);
+                seekBarValue.setText(getString(R.string.tips_level) + " " + greeds[position]);
+                profession.getTipStrategy().setGreed(GreedMode.values()[position]);
+                return position;
             }
         });
     }
