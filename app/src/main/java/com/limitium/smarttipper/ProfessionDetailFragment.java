@@ -58,24 +58,24 @@ public class ProfessionDetailFragment extends Fragment {
             };
             profession = ProfessionListActivity.PROFESSIONS.get(Integer.parseInt((String) getArguments().get(ARG_ITEM_ID)));
 
-            Activity activity = this.getActivity();
-
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            if (appBarLayout != null) {
-                appBarLayout.setTitle(getString(profession.getName()));
-            }
-
-            ImageView professionIcon = (ImageView) activity.findViewById(R.id.ficon);
-            if (professionIcon != null) {
-                Bitmap bm = BitmapFactory.decodeResource(getResources(), profession.getIcon());
-                professionIcon.setImageBitmap(ProfessionListActivity.getCircleBitmap(bm, profession.getColor(), getActivity().getApplicationContext()));
-            }
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Activity activity = getActivity();
+        CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+        if (appBarLayout != null) {
+            appBarLayout.setTitle(getString(profession.getName()));
+        }
+
+        ImageView professionIcon = (ImageView) activity.findViewById(R.id.ficon);
+        if (professionIcon != null) {
+            Bitmap bm = BitmapFactory.decodeResource(getResources(), profession.getIcon());
+            professionIcon.setImageBitmap(ProfessionListActivity.getCircleBitmap(bm, profession.getColor(), getActivity().getApplicationContext()));
+        }
+
         profession.getTipStrategy().deleteObservers();
 
         View rootView = inflater.inflate(R.layout.profession_detail, container, false);
@@ -132,7 +132,7 @@ public class ProfessionDetailFragment extends Fragment {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if(fromUser) {
+                if (fromUser) {
                     setGreedMode(seekBar);
                 }
             }
