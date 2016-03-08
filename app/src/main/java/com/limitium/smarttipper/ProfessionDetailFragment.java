@@ -17,6 +17,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.limitium.smarttipper.core.GreedMode;
+import com.limitium.smarttipper.core.Helper;
 import com.limitium.smarttipper.core.Profession;
 
 import java.util.Observable;
@@ -112,12 +113,8 @@ public class ProfessionDetailFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int persons = s.length() == 0 ? 1 : Integer.valueOf(s.toString());
-                if (persons < 1) {
-                    persons = 1;
-                    orderPersons.setText(String.valueOf(persons));
-                }
-                profession.getTipStrategy().setPersons(persons);
+                float persons = Helper.getTotal(s, orderPersons);
+                profession.getTipStrategy().setPersons((int) persons);
             }
         });
     }
