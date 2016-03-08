@@ -19,7 +19,7 @@
                 style="?android:attr/textAppearanceLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="122dp"
+                android:width="124dp"
                 android:text="Beers:"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/abc_text_size_headline_material" />
@@ -44,7 +44,7 @@
                 style="?android:attr/textAppearanceLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="122dp"
+                android:width="124dp"
                 android:text="Cocktails:"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/abc_text_size_headline_material" />
@@ -96,7 +96,7 @@
             style="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:width="44dp"
+            android:width="46dp"
             android:padding="16dp"
             android:text="$"
             android:textIsSelectable="true"
