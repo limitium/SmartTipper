@@ -9,6 +9,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.limitium.smarttipper.R;
+import com.limitium.smarttipper.core.Helper;
 import com.limitium.smarttipper.core.calculation.BartenderStrategy;
 import com.limitium.smarttipper.core.calculation.BaseStrategy;
 import com.limitium.smarttipper.core.calculation.BellmanStrategy;
@@ -34,12 +35,8 @@ public class BellmanInflater extends Inflater {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int total = s.length() == 0 ? 0 : Integer.valueOf(s.toString());
-                if (total < 0) {
-                    total = 0;
-                    totalbags.setText(String.valueOf(total));
-                }
-                realStrategy.setBags(total);
+                float total = Helper.getTotal(s, totalbags);
+                realStrategy.setBags((int) total);
             }
         });
     }

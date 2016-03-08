@@ -8,11 +8,20 @@ android {
         applicationId "com.limitium.smarttipper"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "0.1.2"
+    }
+    signingConfigs {
+        release {
+            storeFile file('/home/limi/keystore/android.jks')
+            keyAlias 'android'
+            storePassword 'qweqwe123'
+            keyPassword 'qweqwe123'
+        }
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

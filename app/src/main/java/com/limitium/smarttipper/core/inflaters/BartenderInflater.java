@@ -9,6 +9,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.limitium.smarttipper.R;
+import com.limitium.smarttipper.core.Helper;
 import com.limitium.smarttipper.core.calculation.BartenderStrategy;
 import com.limitium.smarttipper.core.calculation.BaseStrategy;
 
@@ -44,12 +45,8 @@ public class BartenderInflater extends TotalInflater {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int total = s.length() == 0 ? 0 : Integer.valueOf(s.toString());
-                if (total < 0) {
-                    total = 0;
-                    totalBeers.setText(String.valueOf(total));
-                }
-                realStrategy.setBeers(total);
+                float total = Helper.getTotal(s, totalBeers);
+                realStrategy.setBeers((int) total);
             }
         });
 
@@ -68,12 +65,8 @@ public class BartenderInflater extends TotalInflater {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int total = s.length() == 0 ? 0 : Integer.valueOf(s.toString());
-                if (total < 0) {
-                    total = 0;
-                    totalCocktails.setText(String.valueOf(total));
-                }
-                realStrategy.setCocktails(total);
+                float total = Helper.getTotal(s, totalCocktails);
+                realStrategy.setCocktails((int) total);
             }
         });
     }
