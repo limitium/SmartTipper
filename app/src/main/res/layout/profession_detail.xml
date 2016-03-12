@@ -107,7 +107,7 @@
             style="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:width="46dp"
+            android:width="@dimen/label_dol"
             android:padding="16dp"
             android:text="$"
             android:textIsSelectable="true"

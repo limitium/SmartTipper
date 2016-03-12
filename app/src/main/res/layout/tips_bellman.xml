@@ -9,7 +9,7 @@
                 style="?android:attr/textAppearanceLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="124dp"
+                android:width="@dimen/label_total"
                 android:text="Bags:"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/abc_text_size_headline_material" />
@@ -18,7 +18,7 @@
                 android:id="@+id/total_bags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="150dp"
+                android:width="@dimen/common_editor"
                 android:ems="10"
                 android:inputType="numberDecimal"
                 android:textSize="@dimen/abc_text_size_headline_material" />
