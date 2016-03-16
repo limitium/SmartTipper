@@ -32,7 +32,7 @@ public class TotalInflater extends Inflater {
 
             @Override
             public void afterTextChanged(Editable s) {
-                float total = Helper.getTotal(s, orderTotal);
+                float total = Helper.getFloat(s, orderTotal);
                 realStrategy.setOrderSumm(total);
             }
         });

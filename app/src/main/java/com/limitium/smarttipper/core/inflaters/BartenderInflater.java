@@ -45,8 +45,8 @@ public class BartenderInflater extends TotalInflater {
 
             @Override
             public void afterTextChanged(Editable s) {
-                float total = Helper.getTotal(s, totalBeers);
-                realStrategy.setBeers((int) total);
+                int total = Helper.getInt(s, totalBeers);
+                realStrategy.setBeers( total);
             }
         });
 
@@ -65,8 +65,8 @@ public class BartenderInflater extends TotalInflater {
 
             @Override
             public void afterTextChanged(Editable s) {
-                float total = Helper.getTotal(s, totalCocktails);
-                realStrategy.setCocktails((int) total);
+                int total = Helper.getInt(s, totalCocktails);
+                realStrategy.setCocktails(total);
             }
         });
     }

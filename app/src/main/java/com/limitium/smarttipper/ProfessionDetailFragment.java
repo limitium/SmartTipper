@@ -113,8 +113,8 @@ public class ProfessionDetailFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                float persons = Helper.getTotal(s, orderPersons);
-                profession.getTipStrategy().setPersons((int) persons);
+                int persons = Helper.getInt(s, orderPersons);
+                profession.getTipStrategy().setPersons(persons);
             }
         });
     }

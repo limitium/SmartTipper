@@ -4,13 +4,10 @@ package com.limitium.smarttipper.core.inflaters;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.limitium.smarttipper.R;
 import com.limitium.smarttipper.core.Helper;
-import com.limitium.smarttipper.core.calculation.BartenderStrategy;
 import com.limitium.smarttipper.core.calculation.BaseStrategy;
 import com.limitium.smarttipper.core.calculation.BellmanStrategy;
 
@@ -35,8 +32,8 @@ public class BellmanInflater extends Inflater {
 
             @Override
             public void afterTextChanged(Editable s) {
-                float total = Helper.getTotal(s, totalbags);
-                realStrategy.setBags((int) total);
+                int total = Helper.getInt(s, totalbags);
+                realStrategy.setBags( total);
             }
         });
     }
